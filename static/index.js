@@ -1,5 +1,5 @@
 function fetchFriends() {
-  const url = 'http://localhost:3000/api/friends';
+  const url = 'http://localhost:3001/friends';
   return fetch(url).then(res => res.json());
 }
 
