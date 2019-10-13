@@ -1,6 +1,6 @@
 function fetchFriends() {
-  const url = 'http://localhost:3000/proxy/friends';
-  return fetch(url).then(res => res.json());
+  const url = 'http://localhost:3001/friends';
+  return fetch(url, { mode: 'cors' }).then(res => res.json());
 }
 
 function renderFriends(friends) {
@@ -16,7 +16,7 @@ function renderFriends(friends) {
 }
 
 function onFindFriendsClick() {
-  fetchFriends();
+  fetchFriends().then(({ data }) => renderFriends(data));
 }
 
 document

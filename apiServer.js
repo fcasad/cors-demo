@@ -5,6 +5,10 @@ const PORT = 3001;
 const app = express();
 
 app.use(morgan('short'));
+app.use((req, res, next) => {
+  res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+  next();
+});
 
 app.get('/friends', (req, res) => {
   const data = [
