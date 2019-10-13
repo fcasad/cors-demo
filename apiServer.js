@@ -7,13 +7,12 @@ const app = express();
 app.use(morgan('short'));
 
 app.get('/friends', (req, res) => {
-  const { callback } = req.query;
   const data = [
     { name: 'Tyler', age: 28 },
     { name: 'Matt', age: 27 },
     { name: 'Ryan', age: 35 },
   ];
-  res.send(`${callback}(${JSON.stringify(data)})`);
+  res.json({ data });
 });
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));

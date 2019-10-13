@@ -1,8 +1,6 @@
 function fetchFriends() {
-  const script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = 'http://localhost:3001/friends?callback=renderFriends';
-  document.head.appendChild(script);
+  const url = 'http://localhost:3000/proxy/friends';
+  return fetch(url).then(res => res.json());
 }
 
 function renderFriends(friends) {
