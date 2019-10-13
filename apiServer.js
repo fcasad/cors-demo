@@ -7,27 +7,13 @@ const app = express();
 app.use(morgan('short'));
 
 app.get('/friends', (req, res) => {
+  const { callback } = req.query;
   const data = [
     { name: 'Tyler', age: 28 },
     { name: 'Matt', age: 27 },
     { name: 'Ryan', age: 35 },
   ];
-  const content = `
-    <html>
-      <body>
-        <script>
-          window.addEventListener('message', event => {
-            if (event.origin === 'http://localhost:3000') {
-              event.source.postMessage({
-                data: ${JSON.stringify(data)}
-              }, event.origin);
-            }
-          })
-        </script>
-      </body>
-    </html>
-  `;
-  res.send(content);
+  res.send(`${callback}(${JSON.stringify(data)})`);
 });
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
