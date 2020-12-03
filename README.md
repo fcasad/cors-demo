@@ -2,6 +2,7 @@
 
 Some historical workarounds (hacks) to the same origin policy for scripts, leading up to CORS
 
+\* See commit history \*
 1. working example, same origin
 2. CORS error, different origins
 3. iframe / postMessage - workaround
